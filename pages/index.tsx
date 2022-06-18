@@ -8,6 +8,7 @@ const Home = () => {
         <meta name="description" content="Spotify-like music player" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      Home
     </div>
   );
 };
