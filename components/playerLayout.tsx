@@ -1,5 +1,5 @@
 import { Grid, GridItem } from '@chakra-ui/layout';
-import { Sidebar } from './sidebar';
+import { Sidebar } from './Sidebar/Sidebar';
 
 export const PlayerLayout = ({ children }) => {
   return (
