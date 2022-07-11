@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { IconType } from 'react-icons/lib';
 
 export interface SidebarItemProps {
-  icon: IconType;
+  icon?: IconType;
   name: string;
   route: string;
 }
@@ -19,7 +19,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
       <LinkBox>
         <NextLink href={route} passHref>
           <LinkOverlay>
-            <ListIcon as={icon} color="white" marginRight={3} />
+            {icon && <ListIcon as={icon} color="white" marginRight={3} />}
             {name}
           </LinkOverlay>
         </NextLink>

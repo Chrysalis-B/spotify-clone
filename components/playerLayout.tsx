@@ -8,7 +8,7 @@ export const PlayerLayout = ({ children }) => {
       templateColumns="minmax(250px, 15%) 1fr"
       templateRows="1fr 100px"
     >
-      <GridItem overflow="scroll">
+      <GridItem overflow="hidden">
         <Sidebar />
       </GridItem>
       <GridItem overflow="scroll">{children}</GridItem>
