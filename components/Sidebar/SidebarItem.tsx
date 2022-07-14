@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { ListItem, LinkBox, LinkOverlay, ListIcon } from '@chakra-ui/layout';
 import NextLink from 'next/link';
 import { IconType } from 'react-icons/lib';
@@ -9,11 +9,7 @@ export interface SidebarItemProps {
   route: string;
 }
 
-export const SidebarItem: React.FC<SidebarItemProps> = ({
-  icon,
-  name,
-  route
-}) => {
+export const SidebarItem: FC<SidebarItemProps> = ({ icon, name, route }) => {
   return (
     <ListItem>
       <LinkBox>
