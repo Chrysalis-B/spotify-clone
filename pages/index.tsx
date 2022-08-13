@@ -1,6 +1,7 @@
-import { Box, Flex } from '@chakra-ui/layout';
+import { Box } from '@chakra-ui/layout';
 import Head from 'next/head';
 import { GradientBackground } from '../components/GradientBackground';
+import { HeaderCard } from '../components/HeaderCard';
 
 const Home = () => {
   const color = 'red';
@@ -12,10 +13,14 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GradientBackground color={color}>
-        <Flex bg={`${color}.600`} padding={6} align="end">
-          Heini
-        </Flex>
-        <div>Home page</div>
+        <HeaderCard
+          color={color}
+          image="/"
+          roundImage
+          subtitle="subtitle"
+          title="title"
+          description="description"
+        />
       </GradientBackground>
     </Box>
   );
