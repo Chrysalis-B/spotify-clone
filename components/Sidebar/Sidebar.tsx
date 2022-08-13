@@ -8,6 +8,7 @@ import {
   MdFavorite
 } from 'react-icons/md';
 import { SidebarList } from './SidebarList';
+import { usePlaylist } from '../../lib/hooks';
 
 const navMenu = [
   {
@@ -40,12 +41,8 @@ const musicMenu = [
   }
 ];
 
-const playLists = [...Array(50).keys()].map(i => ({
-  name: `Playlist ${i + 1}`,
-  route: '/'
-}));
-
 export const Sidebar = () => {
+  const { playlists } = usePlaylist();
   return (
     <Grid
       bg="black"
@@ -68,7 +65,7 @@ export const Sidebar = () => {
         <Divider marginBottom={3} />
       </GridItem>
       <GridItem overflowY="scroll" bg="black">
-        <SidebarList list={playLists} />
+        <SidebarList list={playlists} />
       </GridItem>
     </Grid>
   );

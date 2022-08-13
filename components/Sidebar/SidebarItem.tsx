@@ -13,7 +13,7 @@ export const SidebarItem: FC<SidebarItemProps> = ({ icon, name, route }) => {
   return (
     <ListItem>
       <LinkBox>
-        <NextLink href={route} passHref>
+        <NextLink href={route || '/'} passHref>
           <LinkOverlay>
             {icon && <ListIcon as={icon} color="white" marginRight={3} />}
             {name}
