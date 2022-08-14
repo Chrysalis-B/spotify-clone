@@ -1,5 +1,6 @@
 import { GradientBackground } from '../../components/GradientBackground';
 import { HeaderCard } from '../../components/HeaderCard';
+import { SongsTable } from '../../components/SongsTable';
 import { validateToken } from '../../lib/auth';
 import prisma from '../../lib/prisma';
 
@@ -7,12 +8,13 @@ const Playlist = ({ playlist, color }) => {
   return (
     <GradientBackground color={color}>
       <HeaderCard
-        color="grey"
+        color={color}
         title={playlist.name}
         image={`http://picsum.photos/400?random=${playlist.id}`}
         subtitle="Playlist"
         description={`${playlist.songs.length} songs`}
       />
+      <SongsTable songs={playlist.songs} />
     </GradientBackground>
   );
 };
