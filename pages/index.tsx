@@ -17,8 +17,8 @@ const Home = () => {
           color={color}
           image="/"
           roundImage
-          subtitle="subtitle"
-          title="title"
+          subtitle="profile"
+          title="Anne Moss"
           description="description"
         />
       </GradientBackground>

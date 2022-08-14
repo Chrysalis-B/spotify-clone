@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/layout';
+import { Box, Flex, Text } from '@chakra-ui/layout';
 import { Image } from '@chakra-ui/react';
 
 export const HeaderCard = ({
@@ -18,6 +18,15 @@ export const HeaderCard = ({
           src={image}
           borderRadius={roundImage ? '100%' : '3px'}
         />
+      </Box>
+      <Box padding={2}>
+        <Text fontSize="sm" fontWeight="bold" casing="uppercase">
+          {subtitle}
+        </Text>
+        <Text fontSize="6xl">{title}</Text>
+        <Text fontSize="sm" fontWeight="300">
+          {description}
+        </Text>
       </Box>
     </Flex>
   );
