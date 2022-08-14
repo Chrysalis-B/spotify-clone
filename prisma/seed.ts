@@ -31,7 +31,9 @@ const run = async () => {
     update: {},
     create: {
       email: 'user@example.com',
-      password: bcrypt.hashSync('password', salt)
+      password: bcrypt.hashSync('password', salt),
+      firstName: 'Sipsi',
+      lastName: '3000'
     }
   });
 
