@@ -23,8 +23,10 @@ export const HeaderCard = ({
         <Text fontSize="sm" fontWeight="bold" casing="uppercase">
           {subtitle}
         </Text>
-        <Text fontSize="6xl">{title}</Text>
-        <Text fontSize="sm" fontWeight="300">
+        <Text fontSize="6xl" height="90px">
+          {title}
+        </Text>
+        <Text fontSize="sm" fontWeight="300" height="21px">
           {description}
         </Text>
       </Box>

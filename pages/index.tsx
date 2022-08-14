@@ -23,7 +23,7 @@ const Home = ({ artists }) => {
           roundImage
           subtitle="profile"
           title={isLoading ? '' : `${user.firstName} ${user.lastName}`}
-          description="description"
+          description={isLoading ? '' : `${user.playlistCount} playlists`}
         />
         <Box padding={6}>
           <Box marginBottom={6}>
