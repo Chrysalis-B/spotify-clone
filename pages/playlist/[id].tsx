@@ -3,14 +3,15 @@ import { HeaderCard } from '../../components/HeaderCard';
 import { validateToken } from '../../lib/auth';
 import prisma from '../../lib/prisma';
 
-const Playlist = ({ playlist }) => {
+const Playlist = ({ playlist, color }) => {
   return (
-    <GradientBackground color="gray">
+    <GradientBackground color={color}>
       <HeaderCard
         color="grey"
         title={playlist.name}
-        image="http://placekitten.com/300/300"
+        image={`http://picsum.photos/400?random=${playlist.id}`}
         subtitle="Playlist"
+        description={`${playlist.songs.length} songs`}
       />
     </GradientBackground>
   );
@@ -43,8 +44,25 @@ export const getServerSideProps = async ({ query, req }) => {
     }
   });
 
+  const getBGColor = () => {
+    const colors = [
+      'red',
+      'green',
+      'blue',
+      'orange',
+      'purple',
+      'gray',
+      'teal',
+      'yellow'
+    ];
+    return (
+      colors[playlist.id - 1] ||
+      colors[Math.floor(Math.random() * colors.length)]
+    );
+  };
+
   return {
-    props: { playlist }
+    props: { playlist, color: getBGColor() }
   };
 };
 export default Playlist;
