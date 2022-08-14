@@ -3,9 +3,11 @@ import Head from 'next/head';
 import { AvatarCard } from '../components/AvatarCard';
 import { GradientBackground } from '../components/GradientBackground';
 import { HeaderCard } from '../components/HeaderCard';
+import { useMe } from '../lib/hooks';
 import prisma from '../lib/prisma';
 
 const Home = ({ artists }) => {
+  const { user, isLoading } = useMe();
   const color = 'red';
   return (
     <Box height="100%">
@@ -20,7 +22,7 @@ const Home = ({ artists }) => {
           image="https://i.pravatar.cc/160"
           roundImage
           subtitle="profile"
-          title="Anne Moss"
+          title={isLoading ? '' : `${user.firstName} ${user.lastName}`}
           description="description"
         />
         <Box padding={6}>
@@ -32,7 +34,7 @@ const Home = ({ artists }) => {
           </Box>
           <Flex gap={4} flexWrap="wrap">
             {artists.map(artist => (
-              <Box flex="0 1 220px">
+              <Box key={artist.id} flex="0 1 220px">
                 <AvatarCard avatar={{ ...artist, description: 'Artist' }} />
               </Box>
             ))}

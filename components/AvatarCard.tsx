@@ -3,17 +3,9 @@ import { Image } from '@chakra-ui/react';
 
 export const AvatarCard = ({ avatar }) => {
   return (
-    <Box
-      key={avatar.id}
-      width="100%"
-      bg="gray.900"
-      borderRadius={3}
-      padding={3}
-    >
+    <Box width="100%" bg="gray.900" borderRadius={3} padding={3}>
       <Image
-        src={`https://i.pravatar.cc/200?img=${Math.floor(
-          Math.random() * 70 + 1
-        )}`}
+        src={`https://i.pravatar.cc/200?img=${avatar.id}`}
         borderRadius="100%"
       />
       <Box marginTop={4}>
