@@ -1,7 +1,17 @@
 import { Box, Flex, Text } from '@chakra-ui/layout';
 import { Image } from '@chakra-ui/react';
+import { FC } from 'react';
 
-export const HeaderCard = ({
+interface HeaderCardProps {
+  color: string;
+  image: string;
+  subtitle: string;
+  title: string;
+  description?: string;
+  roundImage?: boolean;
+}
+
+export const HeaderCard: FC<HeaderCardProps> = ({
   color,
   image,
   subtitle,
