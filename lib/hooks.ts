@@ -14,8 +14,13 @@ export const useMe = () => {
 export const usePlaylist = () => {
   const { data, error } = useSWR('/playlist', fetcher);
 
+  const playlists = data?.map(playlist => ({
+    ...playlist,
+    route: `/playlist/${playlist.id}`
+  }));
+
   return {
-    playlists: (data as any) || [], // TODO: add type for playlist
+    playlists: playlists || [], // TODO: add type for playlist
     isLoading: !data && !error,
     isError: error
   };
