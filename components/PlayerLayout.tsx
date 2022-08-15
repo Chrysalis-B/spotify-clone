@@ -1,4 +1,5 @@
 import { Grid, GridItem } from '@chakra-ui/layout';
+import { PlayerBar } from './PlayerBar';
 import { Sidebar } from './Sidebar/Sidebar';
 
 export const PlayerLayout = ({ children }) => {
@@ -12,7 +13,9 @@ export const PlayerLayout = ({ children }) => {
         <Sidebar />
       </GridItem>
       <GridItem overflow="scroll">{children}</GridItem>
-      <GridItem colSpan={2}>player</GridItem>
+      <GridItem colSpan={2}>
+        <PlayerBar />
+      </GridItem>
     </Grid>
   );
 };
