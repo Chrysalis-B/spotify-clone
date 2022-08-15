@@ -1,23 +1,9 @@
+import { InferGetServerSidePropsType } from 'next/types';
 import { GradientBackground } from '../../components/GradientBackground';
 import { HeaderCard } from '../../components/HeaderCard';
 import { SongsTable } from '../../components/SongsTable';
 import { validateToken } from '../../lib/auth';
 import prisma from '../../lib/prisma';
-
-const Playlist = ({ playlist, color }) => {
-  return (
-    <GradientBackground color={color}>
-      <HeaderCard
-        color={color}
-        title={playlist.name}
-        image={`http://picsum.photos/400?random=${playlist.id}`}
-        subtitle="Playlist"
-        description={`${playlist.songs.length} songs`}
-      />
-      <SongsTable songs={playlist.songs} />
-    </GradientBackground>
-  );
-};
 
 export const getServerSideProps = async ({ query, req }) => {
   const { id } = validateToken(req.cookies.TRAX_ACCESS_TOKEN);
@@ -26,15 +12,13 @@ export const getServerSideProps = async ({ query, req }) => {
       id: +query.id,
       userId: id
     },
-    select: {
-      id: true,
-      name: true,
-      userId: true,
+    include: {
       songs: {
         select: {
           id: true,
           name: true,
           duration: true,
+          createdAt: true,
           artist: {
             select: {
               name: true,
@@ -67,4 +51,23 @@ export const getServerSideProps = async ({ query, req }) => {
     props: { playlist, color: getBGColor() }
   };
 };
+
+const Playlist = ({
+  playlist,
+  color
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  return (
+    <GradientBackground color={color}>
+      <HeaderCard
+        color={color}
+        title={playlist.name}
+        image={`http://picsum.photos/400?random=${playlist.id}`}
+        subtitle="Playlist"
+        description={`${playlist.songs.length} songs`}
+      />
+      <SongsTable songs={playlist.songs} />
+    </GradientBackground>
+  );
+};
+
 export default Playlist;

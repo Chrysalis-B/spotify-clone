@@ -1,12 +1,23 @@
 import { Box, Flex, Text } from '@chakra-ui/layout';
 import Head from 'next/head';
+import { InferGetServerSidePropsType } from 'next/types';
 import { AvatarCard } from '../components/AvatarCard';
 import { GradientBackground } from '../components/GradientBackground';
 import { HeaderCard } from '../components/HeaderCard';
 import { useMe } from '../lib/hooks';
 import prisma from '../lib/prisma';
 
-const Home = ({ artists }) => {
+export const getServerSideProps = async () => {
+  const artists = await prisma.artist.findMany({});
+
+  return {
+    props: { artists }
+  };
+};
+
+const Home = ({
+  artists
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { user, isLoading } = useMe();
   const color = 'red';
   return (
@@ -43,19 +54,6 @@ const Home = ({ artists }) => {
       </GradientBackground>
     </Box>
   );
-};
-
-export const getServerSideProps = async () => {
-  const artists = await prisma.artist.findMany({
-    select: {
-      id: true,
-      name: true
-    }
-  });
-
-  return {
-    props: { artists }
-  };
 };
 
 export default Home;
