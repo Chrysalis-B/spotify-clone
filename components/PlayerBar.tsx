@@ -9,7 +9,7 @@ export const PlayerBar = () => {
           <Text fontSize="lg">Song name</Text>
           <Text fontSize="sm">Artist name</Text>
         </Box>
-        <Box>
+        <Box flex="0 1 500px">
           <Player />
         </Box>
         <Box>Buttons</Box>
