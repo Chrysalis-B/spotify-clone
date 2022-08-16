@@ -3,6 +3,7 @@ import { Table, Thead, Td, Tr, Tbody, Th, IconButton } from '@chakra-ui/react';
 import { BsFillPlayFill } from 'react-icons/bs';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { FC } from 'react';
+import { useStoreActions } from 'easy-peasy';
 import { formatDate, formatTime } from '../lib/formatter';
 
 interface SongProps {
@@ -21,6 +22,14 @@ interface SongListProps {
 }
 
 export const SongsTable: FC<SongListProps> = ({ songs }) => {
+  const playSongs = useStoreActions((store: any) => store.changeActiveSongs);
+  const setActiveSong = useStoreActions((store: any) => store.changeActiveSong);
+
+  const handlePlay = (activeSong?) => {
+    setActiveSong(activeSong || songs[0]);
+    playSongs(songs);
+  };
+
   return (
     <Box bg="transparent" color="white">
       <Box padding={9} marginBottom={4}>
@@ -31,6 +40,7 @@ export const SongsTable: FC<SongListProps> = ({ songs }) => {
             aria-label="play"
             size="lg"
             isRound
+            onClick={() => handlePlay()}
           />
         </Box>
         <Table variant="unstyled">
@@ -55,6 +65,7 @@ export const SongsTable: FC<SongListProps> = ({ songs }) => {
                 }}
                 key={song.id}
                 cursor="pointer"
+                onClick={() => handlePlay(song)}
               >
                 <Td>{index + 1}</Td>
                 <Td>{song.name}</Td>
