@@ -14,7 +14,8 @@ export const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
     e.preventDefault();
     setIsLoading(true);
 
-    await auth(mode, { email, password });
+    // TODO: add input fields for first and last name
+    await auth(mode, { email, password, firstName: 'Jane', lastName: 'Doe' });
     setIsLoading(false);
     router.push('/');
   };
