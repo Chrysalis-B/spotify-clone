@@ -34,6 +34,19 @@ const Player = ({ songs, activeSong }) => {
   const [duration, setDuration] = useState(0.0);
   const soundRef = useRef(null);
 
+  useEffect(() => {
+    let timerId;
+    if (isPlaying && !isSeeking) {
+      const f = () => {
+        setSeekValue(soundRef.current.seek());
+        timerId = requestAnimationFrame(f);
+      };
+      timerId = requestAnimationFrame(f);
+      return () => cancelAnimationFrame(timerId);
+    }
+    cancelAnimationFrame(timerId);
+  }, [isPlaying, isSeeking]);
+
   const onShuffle = () => setIsShuffleActive(state => !state);
   const onRepeat = () => setIsRepeatActive(state => !state);
   const playPreviousSong = () =>
