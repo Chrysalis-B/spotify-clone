@@ -29,6 +29,7 @@ export const getServerSideProps = async ({ query, req }) => {
           name: true,
           duration: true,
           createdAt: true,
+          url: true,
           artist: {
             select: {
               name: true,
