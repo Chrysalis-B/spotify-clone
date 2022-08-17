@@ -139,8 +139,8 @@ const Player = ({ songs, activeSong }) => {
       </Center>
       <Box color="gray.600">
         <Flex justify="center" align="center">
-          <Box marginRight={4}>
-            <Text fontSize="xs">1:21</Text>
+          <Box marginRight={4} minWidth="28px">
+            <Text fontSize="xs">{formatTime(seekValue)}</Text>
           </Box>
           <RangeSlider
             // eslint-disable-next-line jsx-a11y/aria-proptypes
@@ -159,7 +159,7 @@ const Player = ({ songs, activeSong }) => {
             </RangeSliderTrack>
             <RangeSliderThumb index={0} />
           </RangeSlider>
-          <Box marginLeft={4}>
+          <Box marginLeft={4} minWidth="28px">
             <Text fontSize="xs">{formatTime(duration)}</Text>
           </Box>
         </Flex>
